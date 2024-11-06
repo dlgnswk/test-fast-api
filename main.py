@@ -17,7 +17,7 @@ app.add_middleware(
 
 @app.get("/api/hello")
 def read_root():
-    return {"message": "Hello from FastAPI"}
+    return {"message": "Test with FastAPI"}
 
 @app.get("/api/bye")
 def read_root():
