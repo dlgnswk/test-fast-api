@@ -70,14 +70,12 @@ async def convert_dwg_to_dxf(file: UploadFile):
     temp_output = os.path.join(temp_dir, "output.dxf")
 
     try:
-        # 업로드된 파일 저장
         content = await file.read()
         with open(temp_input, "wb") as buffer:
             buffer.write(content)
 
         logger.info(f"Saved input file: {temp_input} (size: {len(content)} bytes)")
 
-        # 변환
         success = await convert_dwg_to_dxf_file(temp_input, temp_output)
 
         if not success:
