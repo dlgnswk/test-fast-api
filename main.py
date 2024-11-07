@@ -33,11 +33,11 @@ async def convert_dwg_to_dxf_file(input_file: str, output_file: str) -> bool:
         # 명령어 수정
         result = subprocess.run([
             'dwg2dxf',
-            '-v',      # verbose mode
-            '--as',    # AutoCAD version
-            'r2000',   # Release 2000 format
-            '-b',      # binary output
-            input_file # 입력 파일
+            '-v',
+            '--as',
+            'r2000',
+            '-b',
+            input_file
         ], capture_output=True, text=True)
 
         logger.info(f"Command output: {result.stdout}")
@@ -112,6 +112,6 @@ async def convert_dwg_to_dxf(file: UploadFile):
             shutil.rmtree(temp_dir)
         except Exception as cleanup_error:
             logger.error(f"Failed to clean up temp files: {str(cleanup_error)}")
-            
+
         logger.exception(f"Error during processing: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
